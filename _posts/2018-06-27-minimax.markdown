@@ -57,6 +57,16 @@ select a player, and at the end of each game you must hit reset, or the game log
     border-radius: 5px;
     }
 
+    #endgame {
+        background-color: #82caca;
+        margin: 0 auto;
+        font-family: "Helvetica", sans-serif;
+        display: none;
+        font-size: 3em;
+        text-align: center;
+        margin-bottom: 10px;
+    }
+
     .container {
         max-width: 600px;
         max-height: 600px;
@@ -122,7 +132,9 @@ select a player, and at the end of each game you must hit reset, or the game log
     <button onclick="reset()">Reset</button>
 </div>
 
-<div class="container">
+<div id="endgame">You win!</div>
+
+<div class="container" id="gameBoard">
     <div class="box" id="ul"></div>
     <div class="box" id="um"></div>
     <div class="box" id="ur"></div>
@@ -154,6 +166,7 @@ select a player, and at the end of each game you must hit reset, or the game log
 
         // reset the game board
         function reset() {
+            document.getElementById("endgame").style.display = "none";
             let boxes = document.querySelectorAll('.box');
             boxes.forEach((box) => {
                 box.textContent = "";
@@ -187,9 +200,13 @@ select a player, and at the end of each game you must hit reset, or the game log
 
                 // Check for human win
                 if (gameAI.currentRoot.isLeaf && gameAI.currentRoot.value !=0) {
-                    alert("You win!");
+                    let replace = document.getElementById("endgame");
+                    replace.innerHTML = "You win!";
+                    replace.style.display="block";
                 } else if(gameAI.currentRoot.isLeaf && gameAI.currentRoot.value == 0){
-                    alert("Draw!");
+                    let replace = document.getElementById("endgame");
+                    replace.innerHTML = "Draw!";
+                    replace.style.display="block";
                 }
                 
                 // Choose AI action based on minimax
@@ -200,9 +217,13 @@ select a player, and at the end of each game you must hit reset, or the game log
 
                 // Check for AI win
                 if (gameAI.currentRoot.isLeaf && gameAI.currentRoot.value != 0) {
-                    alert("You lose!");
+                    let replace = document.getElementById("endgame");
+                    replace.innerHTML = "You lose!";
+                    replace.style.display="block";
                 } else if(gameAI.currentRoot.isLeaf && gameAI.currentRoot.value == 0) {
-                    alert("Draw!");
+                    let replace = document.getElementById("endgame");
+                    replace.innerHTML = "Draw!";
+                    replace.style.display="block";
                 }
                 
             } else {
