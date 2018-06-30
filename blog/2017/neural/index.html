@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Jacob Senecal</title>
+  <title>Jacob Senecal | Neural Network from Scratch</title>
   <meta name="description" content="Personal website for Jacob Senecal, developer, scientist, engineer. 
 ">
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/blog/2017/neural/">
 </head>
 
 
@@ -84,56 +84,54 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>Recent Work</h1>
-  <h2>featured personal & professional projects</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Neural Network from Scratch</h1>
+    <p class="post-meta">December 15, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>Link to code: <a target="_blank" href="https://bitbucket.org/jsene/ga_evolve_mlp/src/master/">Click here</a></p>
+
+<p>Link to paper: <a target="_blank" href="/assets/pdf/ml-project3-final.pdf">Click here</a></p>
+
+<p>Several variations of neural networks exist, including Multi-layer perceptron (MLP) networks, 
+recurrent networks, and convolutional networks. I implemented a MLP network capable of performing 
+regression tasks, and with a later update, classification tasks. Code for the networks can be found 
+<a style="color:Blue;" target="_blank" href="https://bitbucket.org/jsene/neural-network">here</a> and
+<a style="color:Blue;" target="_blank" href="https://bitbucket.org/jsene/ga_evolve_mlp">here</a>.
+A neural network consists of an input layer, hidden layers, and an output layer. In a feed forward network nodes in adjacent layers are connected to one another. Each connection in the network is assigned a weight value, which is updated during network training.</p>
+
+<div class="img_row">
+    <img class="col seven" src="/assets/img/NeuralNetwork.png" />
 </div>
 
-
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/minimax/">MiniMax & Game Playing AI</a></h2>
-      <p class="post-meta">June 27, 2018 — 11:30</p>
-      <p>An exploration of game playing AI's, starting with an implementation of the MiniMax algorithm.</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/dqn/">Deep Q-Learning</a></h2>
-      <p class="post-meta">May 3, 2018 — 12:00</p>
-      <p>An implementation and extension of DeepMind's original paper</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2017/neural/">Neural Network from Scratch</a></h2>
-      <p class="post-meta">December 15, 2017 — 07:00</p>
-      <p>A project to create a multi-layer, feed forward, perceptron network capable of regression and classification. In addition to backpropagation, the networks can be trained via several variants of evolutionary algorithms.</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2017/cfd/">Computational Fluid Dynamics</a></h2>
-      <p class="post-meta">December 5, 2017 — 02:00</p>
-      <p>A new algorithm was developed to compute the interface curvature of gas-liquid interfaces. The effect of the scale used to compute the interface curvature is investigated through simulations of dynamic multiphase flows.</p>
-    </li>
-  
-</ul>
-
-
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
+<div class="col ten caption">
+    Example of a feed-forward neural network with one hidden layer. 
 </div>
 
+<p>For this project myself and two of my classmates programmed all of the components required for a neural network from scratch in Python, including functionality to create networks with arbitrary numbers of layers and neurons, with the option of a hyperbolic tangent or sigmoid activation function. The network could be trained for either regression or classification.</p>
 
+<p>In addition to implementing backpropagation to train networks, we also implemented several variants of evolutionary algorithms to train networks, including genetic algorithms and differential evolution.</p>
+
+<p>My classmates and I expected backpropagation with stochastic gradient descent to be the faster training method (in terms of iterations to convergence) as it is a much more direct method for updating network parameters compared to evolutionary approaches. However, in most cases the evolutionary training algorithms performed comparably to backpropagation.</p>
+
+<div class="img_row">
+    <img class="col seven" src="/assets/img/concrete.jpg" />
+</div>
+
+<div class="col ten caption">
+    In terms of regression error the evolutionary algorithms performed similarly to backpropagation. However, in terms of wall clock runtime training with an evolutionary approach was significantly slower. A distributed version of the evolutionary approach may be able to eliminate the runtime disadvantage. 
+</div>
+
+<p>While I wouldn’t use this network and code for any serious research, tensorflow and pytorch are much more capable in this regard, this project was an excellent way to dive into the basic mechanics of neural networks, and I gained a deeper and more intuitive sense of some of their strengths and weaknesses.</p>
+
+  </article>
+
+  
+
+</div>
 
       </div>
     </div>

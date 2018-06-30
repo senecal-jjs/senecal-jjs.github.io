@@ -6,14 +6,14 @@
   <meta name="viewport" content="width=device-width initial-scale=1" />
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
 
-  <title>Jacob Senecal</title>
+  <title>Jacob Senecal | Acoustic Wavenumber Spectroscopy</title>
   <meta name="description" content="Personal website for Jacob Senecal, developer, scientist, engineer. 
 ">
 
   <link rel="shortcut icon" href="/assets/img/favicon.ico">
 
   <link rel="stylesheet" href="/assets/css/main.css">
-  <link rel="canonical" href="/blog/">
+  <link rel="canonical" href="/blog/2017/aws/">
 </head>
 
 
@@ -84,56 +84,67 @@
 
     <div class="page-content">
       <div class="wrapper">
-        <div class="header-bar">
-  <h1>Recent Work</h1>
-  <h2>featured personal & professional projects</h2>
+        <div class="post">
+
+  <header class="post-header">
+    <h1 class="post-title">Acoustic Wavenumber Spectroscopy</h1>
+    <p class="post-meta">August 25, 2017</p>
+  </header>
+
+  <article class="post-content">
+    <p>Link to paper: <a target="_blank" href="/assets/pdf/IWSHM Manuscript.pdf">Click here</a></p>
+
+<p>Acoustic Wavenumber Spectroscopy (AWS) identifies damage in a two-dimensional 
+scan of a structure on a pixel by pixel basis, by estimating the wavenumber of a 
+structure’s response to a steady-state, single frequency, ultrasonic excitation.
+A laser doppler vibrometer is used to measure a structure’s response (known as lamb waves) 
+to the ultrasonic excitation. When the lamb waves encounter a defect, (i.e. a crack, corrosion) 
+the local wavelength of the lamb waves change and the change in wavelength can be detected
+using specialized signal processing techniques.</p>
+
+<p>After processing the raw pattern acoustic wavenumber spectroscopy can produce images like 
+the one shown below, which shows a scan of a composite wing section. The bright blue areas are
+structural elements below the skin, while the bright red circle is a damaged area.</p>
+
+<div class="img_row">
+    <img class="col five" src="/assets/img/wing.jpg" />
+</div>
+
+<p>Commercial laser doppler vibrometers cost in the $60,000 to $80,000 range. While at Los Alamos 
+National Laboratory I developed a much more compact, and simplified laser doppler vibrometer 
+which costs on the order of $10,000. The key to achieving simplicity was leveraging some of the 
+characteristics of acoustic wavenumber spectroscopy (AWS). Namely, that AWS works using a single, known, steady-state frequency. Signal to noise requirements can be relaxed as measurements can be filtered for that specific known frequency.</p>
+
+<div class="img_row">
+    <img class="col five" src="/assets/img/ldv.png" />
+</div>
+
+<div class="col ten caption">
+    The prototype laser doppler vibrometer I developed. The scanning head is small enough to be held 
+    in one hand. 
+</div>
+
+<p>The raw images produced by the laser doppler vibrometer scans show a wave pattern
+produced by the ultrasonic transducer excitation. This wave pattern is then fed 
+through signal processing algorithms to assess changes in spatial wavelength.</p>
+
+<div class="img_row">
+    <img class="col eight" src="/assets/img/dmg.png" />
+</div>
+
+<div class="col ten caption">
+    Here we see an example scan of a 5mm thick, aluminum plate. 
+    The image on the right displays the wave pattern observed in the plate. In the 
+    upper right portion of the scan you can observe a more intense, brighter wave 
+    pattern corresponding to thinning in the aluminum plate, which emulates corrosion. 
 </div>
 
 
-<ul class="post-list">
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/minimax/">MiniMax & Game Playing AI</a></h2>
-      <p class="post-meta">June 27, 2018 — 11:30</p>
-      <p>An exploration of game playing AI's, starting with an implementation of the MiniMax algorithm.</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2018/dqn/">Deep Q-Learning</a></h2>
-      <p class="post-meta">May 3, 2018 — 12:00</p>
-      <p>An implementation and extension of DeepMind's original paper</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2017/neural/">Neural Network from Scratch</a></h2>
-      <p class="post-meta">December 15, 2017 — 07:00</p>
-      <p>A project to create a multi-layer, feed forward, perceptron network capable of regression and classification. In addition to backpropagation, the networks can be trained via several variants of evolutionary algorithms.</p>
-    </li>
-  
-    <li>
-      <h2><a class="post-title" href="/blog/2017/cfd/">Computational Fluid Dynamics</a></h2>
-      <p class="post-meta">December 5, 2017 — 02:00</p>
-      <p>A new algorithm was developed to compute the interface curvature of gas-liquid interfaces. The effect of the scale used to compute the interface curvature is investigated through simulations of dynamic multiphase flows.</p>
-    </li>
-  
-</ul>
+  </article>
 
+  
 
-<div class="pagination clearfix mb1 mt4">
-  <div class="left">
-    
-      <span class="pagination-item disabled">Newer</span>
-    
-  </div>
-  <div class="right">
-    
-      <a class="pagination-item" href="/blog/page2/">Older</a>
-    
-  </div>
-  <div class="pagination-meta">Page 1 of 2</div>
 </div>
-
-
 
       </div>
     </div>
