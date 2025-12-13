@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Home on Jacob Senecal</title>
+    <link>http://localhost:1313/</link>
+    <description>Recent content in Home on Jacob Senecal</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cryptopals Challenges - Set 1</title>
+      <link>http://localhost:1313/posts/crypto-pals-1/crypto_pals_set_1/</link>
+      <pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/crypto-pals-1/crypto_pals_set_1/</guid>
+      <description>Solutions to Set 1 of the CryptoPals challenges.</description>
+    </item>
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/about/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/about/</guid>
+      <description>&lt;p&gt;Hi all, I’m a software engineer currently working on FinTech and stablecoin infrastructure at &lt;a href=&#34;https://figuremarkets.com&#34;&gt;Figure Technologies&lt;/a&gt;. I joined the company when it was one year old, and helped it scale to a successful IPO in September 2025. Before that I worked for Blackmore Sensors and Analytics (now part of &lt;a href=&#34;https.aurora.tech&#34;&gt;Aurora&lt;/a&gt;), and Los Alamos National Laboratory.&lt;/p&gt;&#xA;&lt;p&gt;I hold a Bachelor’s degree in Mechanical Engineering from &lt;a href=&#34;https://www.montana.edu/&#34;&gt;Montana State University&lt;/a&gt; and a Master’s degree in Computer Science from &lt;a href=&#34;https://www.montana.edu/&#34;&gt;Montana State University&lt;/a&gt;. During my studies, I developed a strong interest in algorithms, programming languages, simulation, machine learning, and cryptography. I completed my Master’s thesis on &lt;a href=&#34;https://github.com/tomfran/ANS-Graph-compression&#34;&gt;convolutional neural networks and hyperspectral imagery&lt;/a&gt;. I continue to develop these interests through side projects, including implementations of &lt;a href=&#34;https://github.com/senecal-jjs/bitchat-client-react-native&#34;&gt;encrypted chat over a decentralized bluetooth mesh&lt;/a&gt; and work on challenges like &lt;a href=&#34;https://github.com/senecal-jjs/crypto-pals&#34;&gt;CryptoPals&lt;/a&gt;.&lt;/p&gt;</description>
+    </item>
+    <item>
+      <title>Library</title>
+      <link>http://localhost:1313/library/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/library/</guid>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/40796176-infinite-powers&#34;&gt;Infinite Powers&lt;/a&gt; &lt;br&gt;&#xA;Excellent book about the history of calculus.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/50358103-money?ref=nav_sb_ss_1_31&#34;&gt;Money the True Story of a Made Up Thing&lt;/a&gt; &lt;br&gt;&#xA;Entertaining read about how currency has evolved.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/203578847-wind-and-truth?ref=nav_sb_ss_1_14&#34;&gt;Wind and Truth&lt;/a&gt; &lt;br&gt;&#xA;Conclusion to the first arc of the Stormligh Archive.&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

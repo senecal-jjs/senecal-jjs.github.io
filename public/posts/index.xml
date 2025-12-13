@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Jacob Senecal</title>
+    <link>http://localhost:1313/posts/</link>
+    <description>Recent content in Posts on Jacob Senecal</description>
+    <generator>Hugo</generator>
+    <language>en-us</language>
+    <lastBuildDate>Sun, 12 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/posts/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cryptopals Challenges - Set 1</title>
+      <link>http://localhost:1313/posts/crypto-pals-1/crypto_pals_set_1/</link>
+      <pubDate>Sun, 12 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/crypto-pals-1/crypto_pals_set_1/</guid>
+      <description>Solutions to Set 1 of the CryptoPals challenges.</description>
+    </item>
+  </channel>
+</rss>
