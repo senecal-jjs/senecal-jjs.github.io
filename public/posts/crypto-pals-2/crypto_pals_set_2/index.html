@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content="Solutions to Set 2 of the CryptoPals challenges."/>
+
+
+<meta name="fediverse:creator" content="@username@instance.url">
+
+
+<title>
+    
+    Cryptopals Challenges - Set 2 | Jacob Senecal
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/crypto-pals-2/crypto_pals_set_2/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/crypto-pals-2/crypto_pals_set_2/">
+  <meta property="og:site_name" content="Jacob Senecal">
+  <meta property="og:title" content="Cryptopals Challenges - Set 2">
+  <meta property="og:description" content="Solutions to Set 2 of the CryptoPals challenges.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2022-06-18T00:00:00+00:00">
+    <meta property="article:modified_time" content="2022-06-18T00:00:00+00:00">
+    <meta property="article:tag" content="Crypto">
+    <meta property="article:tag" content="Rust">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.56b1873d8852f8a5a109abda36c1bfcde55cb48e5bcbe0d8c934a196a7dc374a.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">Jacob Senecal</a>
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/about" >
+                /about
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/library" >
+                /library
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+<div class="breadcrumbs"><a href="/">~</a><span class="breadcrumbs-separator">/</span><a href="/posts/">Posts</a><span class="breadcrumbs-separator">/</span>
+        <a href="/posts/crypto-pals-2/crypto_pals_set_2/">Cryptopals Challenges - Set 2</a></div>
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">Cryptopals Challenges - Set 2</h1>
+        <p class="single-summary">Solutions to Set 2 of the CryptoPals challenges.</p>
+        
+        <div class="single-subsummary">
+          
+          <div>
+            
+            <p class="author">Jacob Senecal </p>
+            
+            <p class="single-date">
+              <time datetime="2022-06-18T00:00:00&#43;00:00">18 Jun 2022</time>
+              &nbsp; · &nbsp;6 min read
+            </p>
+          </div>
+        </div>
+        
+    </header>
+      <aside class="toc">
+        <p><strong>Table of contents</strong></p>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#byte-at-a-time-decryption">Byte At A Time decryption</a></li>
+    <li><a href="#ecb-cut-and-paste">ECB Cut and Paste</a></li>
+    <li><a href="#randomness--rust--aes-cbc-oh-my">Randomness &amp; Rust &amp; AES-CBC, oh my</a>
+      <ul>
+        <li><a href="#psuedo-random-number-generators-prngs">Psuedo Random Number Generators (PRNGs)</a></li>
+      </ul>
+    </li>
+  </ul>
+</nav>
+      </aside>
+    
+    <div class="single-content">
+      <p>On to Set 2 of the Cryptopals challenges! I&rsquo;m only going to cover a select few of the problems presented in this set.</p>
+<p>In this set we move on to what the challenge authors present as &ldquo;bread and butter&rdquo; cryptography. Many of the challenges focus on a block cipher called AES-ECB. That&rsquo;s an acronym for Advanced Encryption Standard - Electronic Code Book. It turns out that this mode of AES (there are several variations) is vulnerable to a number of different attacks, that weren&rsquo;t even all that hard to implement.</p>
+<h2 class="heading" id="byte-at-a-time-decryption">
+  Byte At A Time decryption
+  <a class="anchor" href="#byte-at-a-time-decryption">#</a>
+</h2>
+<p>The first attack we&rsquo;ll cover is byte at a time ECB decryption. Imagine you&rsquo;ve got an encrypted string and you&rsquo;d like to know it&rsquo;s contents. Additionally, you have access to an AES-ECB &ldquo;oracle&rdquo; function. Oracle is a commonly used term in these challenges to refer to a function where you might not have access to the function internals, but you can feed the function inputs and view the outputs. So what we&rsquo;ve got is</p>
+<blockquote>
+<p>AES-128-ECB(your-string || unknown-string, random-key)</p>
+</blockquote>
+<p>This attack exploits two key properties of AES-ECB.</p>
+<ol>
+<li>The same plaintext results in the same cipher text.</li>
+<li>We can use property 1 to easily determine the block size of the cipher.</li>
+</ol>
+<p>What is block size? AES (a block cipher) breaks a plaintext input into equal sized blocks of bytes, which are then encrypted.</p>
+<p>To determine the block size we can feed repeated plain text to the oracle, e.g. &ldquo;AAAA&rdquo;, and keep increasing the length of that repeated string until we see the cipher text start to repeat itself. At that point we know we&rsquo;ve reached the end of a block.</p>
+<p>In this case the block size used was 16 bytes. If we craft <code>your-string</code> to be 15 bytes long, then the first byte from the <code>unknown-string</code> will fill the last byte position in the 16 byte cipher text block.</p>
+<p>So now we make a lookup table. We take the 15 byte <code>your-string</code> and append all 256 possiblities for a single byte to the end of <code>your-string</code>, feed it through the oracle function to produce a corresponding cipher text, and make an entry into a hash map where the key is the corresponding cipher text and the value is <code>your-string + random-byte</code>.</p>
+<p>We then take the first byte from <code>unknown-string</code> and append it to <code>your-string</code>. We feed this new string into the oracle and match the output cipher text with one of the keys in the hash map. The matching entry will reveal the first byte of the cipher text. We continue this process until we&rsquo;ve determined every byte in <code>unknown-string</code>.</p>
+<p>A couple new Rust constructs were used in this challenge. I used a Hashmap as a lookup table. This worked similarly to Hashmaps or Dictionaries in any other language. I learned a couple ways of combining byte vectors and byte slices. I learned a new way of instantiating a vector using a macro, <code>vec![]</code>. I still need to dig into macros. I&rsquo;m also appreciating how the Rust compiler helps me write safe logic. I&rsquo;m getting a better feel for Rust&rsquo;s ownership model at this point.</p>
+<h2 class="heading" id="ecb-cut-and-paste">
+  ECB Cut and Paste
+  <a class="anchor" href="#ecb-cut-and-paste">#</a>
+</h2>
+<p>This was a fun one! In this challenge we were able to inject our own malicious data into an existing ciphertext encrypted using AES-ECB! In this challenge we model an encrypted cookie like so,</p>
+<blockquote>
+<p><a href="mailto:email=foo@bar.com">email=foo@bar.com</a>&amp;uid=10&amp;role=user</p>
+</blockquote>
+<p>Our goal is to elevate our role to admin. We have control over the user email, so <code>foo@bar.com</code> in the example above.</p>
+<p>Again, the exploitable property here is that the same input to AES-ECB always results in the same output. We can use this property to determine the block size and, then craft an input email such that <code>role=</code> falls right at end of a block, causing the role, <code>user</code> to end up in the subsequent block. We can then replace that final block with one of our own making. This block might be an encrypted form of &ldquo;admin&rdquo; perhaps, and now we have an encrypted cookie with an elevated user role.</p>
+<h2 class="heading" id="randomness--rust--aes-cbc-oh-my">
+  Randomness &amp; Rust &amp; AES-CBC, oh my
+  <a class="anchor" href="#randomness--rust--aes-cbc-oh-my">#</a>
+</h2>
+<p>In set 2 of the challenges we were asked to implement AES-CBC mode. This mode prevents the same plaintext from always encrypting to the same ciphertext by introducing a random initial value, and chaining blocks together.</p>
+<p>The steps look like,</p>
+<ol>
+<li>Create an initial value vector (IV) with size equal to the block size.</li>
+<li>XOR the IV with the first plaintext block P<!-- raw HTML omitted -->1<!-- raw HTML omitted -->.</li>
+<li>XOR the resulting ciphertext block C<!-- raw HTML omitted -->1<!-- raw HTML omitted --> with the next plaintext block P<!-- raw HTML omitted -->2<!-- raw HTML omitted --> and so on.</li>
+</ol>
+<p>By creating a random IV each time we encrypt, we prevent an identical plaintext from resulting in an identical ciphertext.</p>
+<h3 class="heading" id="psuedo-random-number-generators-prngs">
+  Psuedo Random Number Generators (PRNGs)
+  <a class="anchor" href="#psuedo-random-number-generators-prngs">#</a>
+</h3>
+<p>To produce the initial value for CBC mode I had to dive into the PRNGs available in the Rust libary <code>Rand</code>. The topic of randomness is complex enough that there is a <!-- raw HTML omitted -->Rust Rand Book<!-- raw HTML omitted --> covering all of the options available in the <code>Rand</code> library.</p>
+<p>For cryptographic purposes it&rsquo;s important to know that there is a difference between a run of the mill PRNG and a cryptographically secure PRNG. There is a concept of a true random number generator. A true random number generator is one in which all values are equally likely with no pattern or bias. Some natural processes can be considered true random number generators. The Rust Rand Book mentions atomic decay and thermal noise.</p>
+<p>Essentially, a cryptographically secure PRNG is a better approximation of a true random number generator than a non cryptographically secure PRNG. There are two key traits of a cryptographically secure PRNG outlined in the Rust Rand Book.</p>
+<ul>
+<li>
+<p>Their state is sufficiently large that a brute-force approach simply trying all initial values is not a feasible method of finding the initial state used to produce an observed sequence of output values.</p>
+</li>
+<li>
+<p>There is no other algorithm which is sufficiently better than the brute-force method which would make it feasible to predict the next output value.</p>
+</li>
+</ul>
+<p>I ended up using <code>thread_rng</code> due to it&rsquo;s convenience. The Rust Rand Book has this to say,</p>
+<blockquote>
+<p>Often you can just use thread_rng, a function which automatically initializes an RNG in thread-local memory and returns a reference to it. It is fast, good quality, and (to the best of our knowledge) cryptographically secure</p>
+</blockquote>
+<p>However, there are several other cryptographically secure PRNGs within the RAND library that would likely be better choices for a production project. The Rust Rand Book actually explicitly states that <code>Rand</code> is not a cryptographic library, and recommends using specialized libraries.</p>
+<p>I&rsquo;m not really sure where that leaves the &ldquo;cryptographically secure&rdquo; PRNGs in <code>Rand</code>. The documentation calls them cryptographically secure, but then recommends using something else entirely. Maybe it&rsquo;s a case of not wanting to take on the heavy responsiblity of making claims of <code>Rand</code> being ready for production cryptography applications.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/crypto-pals-1/crypto_pals_set_1/">
+                        Cryptopals Challenges - Set 1
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+
+  </footer>
+
+  
+  <link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+  
+<script defer 
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

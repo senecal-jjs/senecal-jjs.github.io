@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en-us"
+  dir="ltr">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+
+
+
+
+
+
+
+
+    
+
+
+
+
+
+
+<link rel="icon" type="image/ico" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="http://localhost:1313/android-chrome-192x192.png">
+<link rel="apple-touch-icon" sizes="180x180" href="http://localhost:1313/apple-touch-icon.png">
+
+<meta name="description" content="An exploration in multi-phase flows."/>
+
+
+<meta name="fediverse:creator" content="@username@instance.url">
+
+
+<title>
+    
+    Computational Fluid Dynamics | Jacob Senecal
+    
+</title>
+
+<link rel="canonical" href="http://localhost:1313/posts/computation_fluid_dynamics/curvature/"/>
+
+<meta property="og:url" content="http://localhost:1313/posts/computation_fluid_dynamics/curvature/">
+  <meta property="og:site_name" content="Jacob Senecal">
+  <meta property="og:title" content="Computational Fluid Dynamics">
+  <meta property="og:description" content="An exploration in multi-phase flows.">
+  <meta property="og:locale" content="en_us">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="posts">
+    <meta property="article:published_time" content="2018-07-13T00:00:00+00:00">
+    <meta property="article:modified_time" content="2018-07-13T00:00:00+00:00">
+    <meta property="article:tag" content="Computational Physics">
+
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/assets/combined.min.56b1873d8852f8a5a109abda36c1bfcde55cb48e5bcbe0d8c934a196a7dc374a.css" media="all">
+
+
+
+
+
+
+
+
+
+
+
+    
+
+
+
+
+</head>
+
+
+
+
+
+
+
+<body class="auto">
+
+  <div class="content">
+    <header>
+      
+
+<div class="header">
+
+    
+
+    <h1 class="header-title">
+        <a href="http://localhost:1313/">Jacob Senecal</a>
+    </h1>
+
+    <div class="header-menu">
+        
+
+        
+        
+
+        <p
+            class="small ">
+            <a href="/" >
+                /home
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/posts" >
+                /posts
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/about" >
+                /about
+            </a>
+        </p>
+        
+
+        <p
+            class="small ">
+            <a href="/library" >
+                /library
+            </a>
+        </p>
+        
+        
+    </div>
+
+    
+
+</div>
+
+    </header>
+
+    <main class="main">
+      
+
+
+
+
+<div class="breadcrumbs"><a href="/">~</a><span class="breadcrumbs-separator">/</span><a href="/posts/">Posts</a><span class="breadcrumbs-separator">/</span>
+        <a href="/posts/computation_fluid_dynamics/curvature/">Computational Fluid Dynamics</a></div>
+
+
+<div  class="autonumber" >
+  <article>
+    <header class="single-intro-container">
+        
+        <h1 class="single-title">Computational Fluid Dynamics</h1>
+        <p class="single-summary">An exploration in multi-phase flows.</p>
+        
+        <div class="single-subsummary">
+          
+          <div>
+            
+            <p class="author">Jacob Senecal </p>
+            
+            <p class="single-date">
+              <time datetime="2018-07-13T00:00:00&#43;00:00">13 Jul 2018</time>
+              &nbsp; · &nbsp;3 min read
+            </p>
+          </div>
+        </div>
+        
+    </header>
+      <aside class="toc">
+        <p><strong>Table of contents</strong></p>
+        <nav id="TableOfContents"></nav>
+      </aside>
+    
+    <div class="single-content">
+      <p><a href="https://bitbucket.org/jsene/multiphase-uncertainty-quantification/src/master/">Link to code</a>: <!-- raw HTML omitted -->Click here<!-- raw HTML omitted --></p>
+<p>Link to paper: &lt;a target=&quot;_blank&quot; href=&quot;{{ url_for(&lsquo;static&rsquo;, filename=&ldquo;pdf/computational_physics_senecal.pdf&rdquo;) }}&quot;&gt;Click here<!-- raw HTML omitted --></p>
+<p>I worked in a computational fluid dynamics research lab during my undergrad years.
+In the lab we focused on developing new computational techniques to more efficiently
+simulate fluid dynamics phenomena. One of the main projects I worked on was to develop
+a new algorithm to more accurately calculate the curvature of liquid droplets in a multiphase flow.
+I presented the results of my work at an American Physical Society conference, and we also
+published our results to the Journal of Computational Physics.</p>
+<video preload="metadata" controls muted loop width="500"> 
+    
+    <source
+      src="/videos/jet.mp4"
+      type="video/mp4"
+    >
+    Your browser does not support the video element.
+  </video>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>Many gas-liquid flows are controlled by the dynamics at the phase interface, particularly the surface tension force. For example, in the atomization of a liquid fuel into droplets, the surface tension force controls the growth of interfacial instabilities that break apart the liquid core, forming ligaments and droplets that may again break apart if the flow inertia is larger than the surface tension force. For predictive simulations, of this and other gas-liquid flows, the surface tension
+force needs to be accurate and should converge with mesh refinement.</p>
+<p>Our new algorithm computes the interface curvature by fitting a polynomial to interfacial points computed from what&rsquo;s known as a volume of fluid interface representation. The fit is performed with a weighted least squares regression.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>The points used in the least squares method are weighted using a Gaussian distribution. What this means in practice is that points nearer
+to the location where the interface curvature is being calculated have a greater influence on the polynomial that is fit to the interface
+points, and consequently points nearer to the location where where the interface curvature is being calculated have a greater influence on
+the final curvature calculation itself.</p>
+<p>In this study the Gaussian distribution parameters were varied to change the scale the curvature is computed on (i.e. vary how much influence near and far points have on the line of best fit, and by extension the curvature calculation). The impact of the curvature scale was assessed for an oscillating droplet and a standing wave test case. These are test cases that are simple enough to have analytical solutions to use as a baseline measurement.</p>
+<!-- raw HTML omitted -->
+<!-- raw HTML omitted -->
+<p>In the figures above, the image on the left shows the standing wave test case solved numerically
+where the polynomial fit used to calculate interface curvature was calculated using a rather narrow
+Gaussian distribution to weight the points that were fit to the interface. The image on the right
+used a Gaussian distribution that was twice as wide.</p>
+<p>In a nutshell it turns out that it&rsquo;s important to balance how the points along the interace are weighted when fitting a polynomial to compute the interface curvature, with the grid resolution the curvature is being computed on. For a much more detailed analysis see our paper in the Journal of Computational Physics.</p>
+
+    </div>
+  </article>
+
+  
+
+  
+
+  
+  
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/crypto-pals-1/crypto_pals_set_1/">
+                        Cryptopals Challenges - Set 1
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
+
+  
+
+  
+
+  
+  <div class="back-to-top">
+    <a href="#top">
+      back to top
+    </a>
+  </div>
+  
+
+</div>
+
+
+    </main>
+  </div>
+
+  
+  
+
+
+
+
+
+    
+
+
+
+
+  <footer>
+    
+
+
+  </footer>
+
+  
+  <link rel="stylesheet" 
+  href="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.css">
+  
+<script defer 
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/katex.min.js"></script>
+
+<script defer
+  src="https://cdn.jsdelivr.net/npm/katex@0.16.22/dist/contrib/auto-render.min.js"
+  onload="renderMathInElement(document.body);"></script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    renderMathInElement(document.body, {
+      delimiters: [
+        { left: "$$", right: "$$", display: true },
+        { left: "$", right: "$", display: false }
+      ]
+    });
+  });
+</script>
+  
+</body>
+
+<script src="/js/theme-switch.js"></script>
+<script defer src="/js/copy-code.js"></script>
+</html>

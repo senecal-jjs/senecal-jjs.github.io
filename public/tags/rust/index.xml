@@ -6,8 +6,15 @@
     <description>Recent content in Rust on Jacob Senecal</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Sun, 12 Jun 2022 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Sat, 18 Jun 2022 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/rust/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Cryptopals Challenges - Set 2</title>
+      <link>http://localhost:1313/posts/crypto-pals-2/crypto_pals_set_2/</link>
+      <pubDate>Sat, 18 Jun 2022 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/crypto-pals-2/crypto_pals_set_2/</guid>
+      <description>Solutions to Set 2 of the CryptoPals challenges.</description>
+    </item>
     <item>
       <title>Cryptopals Challenges - Set 1</title>
       <link>http://localhost:1313/posts/crypto-pals-1/crypto_pals_set_1/</link>

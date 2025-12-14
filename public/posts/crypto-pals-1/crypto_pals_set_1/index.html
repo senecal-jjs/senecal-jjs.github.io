@@ -181,11 +181,19 @@
     </header>
       <aside class="toc">
         <p><strong>Table of contents</strong></p>
-        <nav id="TableOfContents"></nav>
+        <nav id="TableOfContents">
+  <ul>
+    <li><a href="#set-1">Set 1</a></li>
+  </ul>
+</nav>
       </aside>
     
     <div class="single-content">
-      <p>I&rsquo;ve recently been working my way through the book &ldquo;Serious Cryptography&rdquo; by Jean-Philippe Aumasson. It provides
+      <h2 class="heading" id="set-1">
+  Set 1
+  <a class="anchor" href="#set-1">#</a>
+</h2>
+<p>I&rsquo;ve recently been working my way through the book &ldquo;Serious Cryptography&rdquo; by Jean-Philippe Aumasson. It provides
 a practical discussion of many commonly used cryptographic principles, e.g. block and stream ciphers, randomness, RSA, Diffie-Helman, and TLS.</p>
 <p>In tandem I&rsquo;ve been looking to improve my proficiency in the Rust programming language. A few days ago I came across
 a set of practical crypto challenges published by <!-- raw HTML omitted -->Cryptopals<!-- raw HTML omitted -->.
@@ -200,90 +208,84 @@ and the key = &ldquo;KEY&rdquo;</p>
 &ldquo;KEYKEYKEYK&rdquo;</p>
 <p>Each corresponding byte is xor-ed to produce the resulting cipher text byte. One note, it&rsquo;s natural to think about many of these ciphers in terms of letters and words, things that we humans can read. However, almost all of these concepts operate at the byte level when actually implemented.</p>
 <p>The function to encrypt and decrypt repeating key xor can be implemented as follows:</p>
-<pre><code>:::rust
-pub fn operate(text: &amp;[u8], key: &amp;[u8]) -&gt; Vec&lt;u8&gt; {
-    let repeated_key: Vec&lt;u8&gt; = key
-        .into_iter()
-        .cycle()
-        .take(text.len())
-        .map(|v| *v)
-        .collect();
-
-    fixed_xor(text, &amp;repeated_key)
-}
-
-fn fixed_xor(a: &amp;[u8], b: &amp;[u8]) -&gt; Vec&lt;u8&gt; {
-    assert_eq!(a.len(), b.len());
-
-    a.iter()
-        .zip(b)
-        .map(|(x, y)| x ^ y)
-        .collect()
-}
-</code></pre>
-<p>One pleasant surprise for me has been how Rust can often be written in a functional style, with a tree of expressions mapping values to other values, e.g. cycle -&gt; take -&gt; map. There&rsquo;s also a distinction between <code>into_iter</code> and <code>iter</code> when creating an iterator. <code>into_iter</code> consumes the variable taking ownership, while <code>iter</code> operates on a reference.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">pub</span> <span style="font-weight:bold">fn</span> operate(text: <span style="">&amp;</span>[<span style="">u8</span>], key: <span style="">&amp;</span>[<span style="">u8</span>]) -&gt; Vec&lt;<span style="">u8</span>&gt; {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> repeated_key: Vec&lt;<span style="">u8</span>&gt; = key
+</span></span><span style="display:flex;"><span>        .into_iter()
+</span></span><span style="display:flex;"><span>        .cycle()
+</span></span><span style="display:flex;"><span>        .take(text.len())
+</span></span><span style="display:flex;"><span>        .map(|v| *v)
+</span></span><span style="display:flex;"><span>        .collect();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    fixed_xor(text, &amp;repeated_key)
+</span></span><span style="display:flex;"><span>}
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="font-weight:bold">fn</span> fixed_xor(a: <span style="">&amp;</span>[<span style="">u8</span>], b: <span style="">&amp;</span>[<span style="">u8</span>]) -&gt; Vec&lt;<span style="">u8</span>&gt; {
+</span></span><span style="display:flex;"><span>    assert_eq!(a.len(), b.len());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    a.iter()
+</span></span><span style="display:flex;"><span>        .zip(b)
+</span></span><span style="display:flex;"><span>        .map(|(x, y)| x ^ y)
+</span></span><span style="display:flex;"><span>        .collect()
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>One pleasant surprise for me has been how Rust can often be written in a functional style, with a tree of expressions mapping values to other values, e.g. cycle -&gt; take -&gt; map. There&rsquo;s also a distinction between <code>into_iter</code> and <code>iter</code> when creating an iterator. <code>into_iter</code> consumes the variable taking ownership, while <code>iter</code> operates on a reference.</p>
 <p>Back to the cipher at hand. Substitution ciphers can be vulnerable to frequency analysis. That is, the characters in a given language typically have a characteristic frequency. For example, in English R, S, T, L, N, E are the most commonly occurring letters. If we decrypt a cipher text with a given key, we&rsquo;d expect the frequency of characters in the plain text output to reasonably match known frequencies of letters occuring in typical English, if the key we used to decrypt is correct.</p>
 <p>So our first step is to determine likely key sizes. We can then try random keys, and the one resulting in the best looking plaintext in terms of character frequency matching known English character frequency, is likely the correct key.</p>
 <p>The Cryptopals challenge description gives you instructions on how to guess a key size. It involves computing the hamming distance between successive strings. I had to learn a little bit about string formatting in Rust to take a byte, and convert it to a string representation of the bits in that byte. I&rsquo;m using &ldquo;string&rdquo; loosely here. There are distinctions in Rust between <code>String</code>, <code>&amp;str</code> (string slice), and string literals. <code>str</code> known as a &ldquo;string slice&rdquo;, is the only type present in the core Rust language, and as the Rust documentation notes, it&rsquo;s usually see in it&rsquo;s borrowed form <code>&amp;str</code>. <code>String</code> is provided by the standard library, and is both growable and mutable.</p>
 <p>The formatting <code>:0&gt;8b</code> says fill with 0&rsquo;s from the left until we reach 8 bits, and <code>0u32</code> in the <code>fold</code> function says start with a value of 0 with data type of 32 bit unsigned integer.</p>
-<pre><code>:::rust
-pub fn hamming_distance(a: &amp;[u8], b: &amp;[u8]) -&gt; u32 { 
-    assert_eq!(a.len(), b.len());
-
-    a.iter()
-        .zip(b)
-        .fold(0u32, |acc, (x, y)| {
-            // Get a representation of the bits in each byte, x, y.
-            // pad with leading zeros if necessary to fill 8 bits
-            let b1 = format!(&quot;{:0&gt;8b}&quot;, x);
-            let b2 = format!(&quot;{:0&gt;8b}&quot;, y);
-
-            acc + b1
-                .chars()
-                .zip(b2.chars())
-                .fold(0_u32, |sum, (c1, c2)| {
-                    if c1 != c2 { sum + 1 } else { sum }
-                })
-        })        
-}
-</code></pre>
-<p>Now on to the cipher breaker. A couple Rust concepts to mention. <code>Option</code>; this was a nice way of initializing min distance, without having to do something like assign it the MAX representable <code>f64</code> value. <code>match</code> allowed me to check if <code>min_distance</code> had been assigned a value yet, and perform logic based on that. Rust also has a nice <code>Range</code> syntax. 0..=255 is a range inclusive of both 0 and 255. 0..256 would be a range from 0 to 256 <em>exclusive</em> of 256.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">pub</span> <span style="font-weight:bold">fn</span> hamming_distance(a: <span style="">&amp;</span>[<span style="">u8</span>], b: <span style="">&amp;</span>[<span style="">u8</span>]) -&gt; <span style="">u32</span> { 
+</span></span><span style="display:flex;"><span>    assert_eq!(a.len(), b.len());
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    a.iter()
+</span></span><span style="display:flex;"><span>        .zip(b)
+</span></span><span style="display:flex;"><span>        .fold(0<span style="font-weight:bold">u32</span>, |acc, (x, y)| {
+</span></span><span style="display:flex;"><span>            <span style="font-style:italic">// Get a representation of the bits in each byte, x, y.
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-style:italic">// pad with leading zeros if necessary to fill 8 bits
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>            <span style="font-weight:bold">let</span> b1 = format!(<span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">{:0&gt;8b}</span><span style="font-style:italic">&#34;</span>, x);
+</span></span><span style="display:flex;"><span>            <span style="font-weight:bold">let</span> b2 = format!(<span style="font-style:italic">&#34;</span><span style="font-weight:bold;font-style:italic">{:0&gt;8b}</span><span style="font-style:italic">&#34;</span>, y);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            acc + b1
+</span></span><span style="display:flex;"><span>                .chars()
+</span></span><span style="display:flex;"><span>                .zip(b2.chars())
+</span></span><span style="display:flex;"><span>                .fold(0_<span style="font-weight:bold">u32</span>, |sum, (c1, c2)| {
+</span></span><span style="display:flex;"><span>                    <span style="font-weight:bold">if</span> c1 != c2 { sum + 1 } <span style="font-weight:bold">else</span> { sum }
+</span></span><span style="display:flex;"><span>                })
+</span></span><span style="display:flex;"><span>        })        
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>Now on to the cipher breaker. A couple Rust concepts to mention. <code>Option</code>; this was a nice way of initializing min distance, without having to do something like assign it the MAX representable <code>f64</code> value. <code>match</code> allowed me to check if <code>min_distance</code> had been assigned a value yet, and perform logic based on that. Rust also has a nice <code>Range</code> syntax. 0..=255 is a range inclusive of both 0 and 255. 0..256 would be a range from 0 to 256 <em>exclusive</em> of 256.</p>
 <p>To break the cipher here we simply run through all 256 possibilities for a single byte key and take the one that results in plaintext whose character frequency best matches known english character frequency. That&rsquo;s pretty much it for this challenge! I&rsquo;ve left out the portion of the code where we break the cipher text into blocks, such that every byte in the block was encrypted by the same key byte. The cryptopals website describes what to do here to get the blocks. So just know that the function below is solving for a single byte of the key.</p>
-<pre><code>:::rust
-pub fn break_cipher(cipher_bytes: &amp;[u8]) -&gt; u8 {
-    let mut min_distance: Option&lt;f64&gt; = None;
-    let mut key: u8 = 0;
-
-    // 256 possibilities for a single byte key
-    for c in 0..=255 {
-    let plain_text: Vec&lt;u8&gt; = cipher_bytes
-        .iter()
-        .map(|cipher_letter| cipher_letter ^ c)
-        .collect();
-
-    let readable = String::from_utf8_lossy(&amp;plain_text);
-
-    let frequency_distance = check_frequency_match(&amp;readable);
-
-    min_distance = match min_distance {
-        None =&gt; {
-        Some(frequency_distance)
-        },
-        Some(current_min) =&gt; {
-        if frequency_distance &lt; current_min { 
-            key = c;
-            Some(frequency_distance)
-        } else { 
-            Some(current_min)
-        }
-        }
-    };
-    };
-
-    key
-}
-</code></pre>
-<p>That&rsquo;s all for the first set. Several Rust concepts introduced, including iterators, data types, ownership, matching and control flow, some common data types, and available standard library operations that can be applied to iterators.</p>
+<div class="highlight"><pre tabindex="0" style="background-color:#fff;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-rust" data-lang="rust"><span style="display:flex;"><span><span style="font-weight:bold">pub</span> <span style="font-weight:bold">fn</span> break_cipher(cipher_bytes: <span style="">&amp;</span>[<span style="">u8</span>]) -&gt; <span style="">u8</span> {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> <span style="font-weight:bold">mut</span> min_distance: Option&lt;<span style="">f64</span>&gt; = None;
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> <span style="font-weight:bold">mut</span> key: <span style="">u8</span> = 0;
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-style:italic">// 256 possibilities for a single byte key
+</span></span></span><span style="display:flex;"><span><span style="font-style:italic"></span>    <span style="font-weight:bold">for</span> c <span style="font-weight:bold">in</span> 0..=255 {
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> plain_text: Vec&lt;<span style="">u8</span>&gt; = cipher_bytes
+</span></span><span style="display:flex;"><span>        .iter()
+</span></span><span style="display:flex;"><span>        .map(|cipher_letter| cipher_letter ^ c)
+</span></span><span style="display:flex;"><span>        .collect();
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> readable = String::from_utf8_lossy(&amp;plain_text);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="font-weight:bold">let</span> frequency_distance = check_frequency_match(&amp;readable);
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    min_distance = <span style="font-weight:bold">match</span> min_distance {
+</span></span><span style="display:flex;"><span>        None =&gt; {
+</span></span><span style="display:flex;"><span>        Some(frequency_distance)
+</span></span><span style="display:flex;"><span>        },
+</span></span><span style="display:flex;"><span>        Some(current_min) =&gt; {
+</span></span><span style="display:flex;"><span>        <span style="font-weight:bold">if</span> frequency_distance &lt; current_min { 
+</span></span><span style="display:flex;"><span>            key = c;
+</span></span><span style="display:flex;"><span>            Some(frequency_distance)
+</span></span><span style="display:flex;"><span>        } <span style="font-weight:bold">else</span> { 
+</span></span><span style="display:flex;"><span>            Some(current_min)
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>    };
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    key
+</span></span><span style="display:flex;"><span>}
+</span></span></code></pre></div><p>That&rsquo;s all for the first set. Several Rust concepts introduced, including iterators, data types, ownership, matching and control flow, some common data types, and available standard library operations that can be applied to iterators.</p>
 <p>I also got familiar with some basic cryptographic concepts and operations, XOR-ing byte arrays, converting between plaintext and ciphertext, and breaking a simple cipher.</p>
 
     </div>
@@ -295,6 +297,44 @@ pub fn break_cipher(cipher_bytes: &amp;[u8]) -&gt; u8 {
 
   
   
+
+<div class="single-pagination">
+    <hr />
+
+    <div class="flexnowrap">
+
+        <div class="single-pagination-prev">
+            
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/computation_fluid_dynamics/curvature/">
+                        Computational Fluid Dynamics
+                    </a>
+                </div>
+            </div>
+            
+        </div>
+
+        <div class="single-pagination-next">
+            
+            <div class="single-pagination-container-next">
+                <div class="single-pagination-text">
+                    <a href="/posts/crypto-pals-2/crypto_pals_set_2/">
+                        Cryptopals Challenges - Set 2
+                    </a>
+                </div>
+                <div class="single-pagination-text">→</div>
+            </div>
+            
+        </div>
+
+    </div>
+
+    <hr />
+</div>
+
+
 
   
 
