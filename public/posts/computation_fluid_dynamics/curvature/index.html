@@ -47,8 +47,8 @@
   <meta property="og:locale" content="en_us">
   <meta property="og:type" content="article">
     <meta property="article:section" content="posts">
-    <meta property="article:published_time" content="2018-07-13T00:00:00+00:00">
-    <meta property="article:modified_time" content="2018-07-13T00:00:00+00:00">
+    <meta property="article:published_time" content="2017-05-22T00:00:00+00:00">
+    <meta property="article:modified_time" content="2017-05-22T00:00:00+00:00">
     <meta property="article:tag" content="Computational Physics">
 
 
@@ -171,21 +171,21 @@
             <p class="author">Jacob Senecal </p>
             
             <p class="single-date">
-              <time datetime="2018-07-13T00:00:00&#43;00:00">13 Jul 2018</time>
+              <time datetime="2017-05-22T00:00:00&#43;00:00">22 May 2017</time>
               &nbsp; · &nbsp;3 min read
             </p>
           </div>
         </div>
         
     </header>
-      <aside class="toc">
-        <p><strong>Table of contents</strong></p>
-        <nav id="TableOfContents"></nav>
-      </aside>
     
     <div class="single-content">
-      <p><a href="https://bitbucket.org/jsene/multiphase-uncertainty-quantification/src/master/">Link to code</a>: <!-- raw HTML omitted -->Click here<!-- raw HTML omitted --></p>
-<p>Link to paper: &lt;a target=&quot;_blank&quot; href=&quot;{{ url_for(&lsquo;static&rsquo;, filename=&ldquo;pdf/computational_physics_senecal.pdf&rdquo;) }}&quot;&gt;Click here<!-- raw HTML omitted --></p>
+      <p><a href="https://bitbucket.org/jsene/multiphase-uncertainty-quantification/src/master/">Link to code</a></p>
+<p><a href="/documents/computational_physics_senecal.pdf">Link to paper</a></p>
+<h2 class="heading" id="multi-phase-flows">
+  Multi-phase flows
+  <a class="anchor" href="#multi-phase-flows">#</a>
+</h2>
 <p>I worked in a computational fluid dynamics research lab during my undergrad years.
 In the lab we focused on developing new computational techniques to more efficiently
 simulate fluid dynamics phenomena. One of the main projects I worked on was to develop
@@ -200,23 +200,35 @@ published our results to the Journal of Computational Physics.</p>
     >
     Your browser does not support the video element.
   </video>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<p>An example of a multiphase flow simulation is shown above. This particular simulation is of a
+liquid being injected into a gas cross-flow. This kind of enviroment would be encountered in a jet engine for example.</p>
 <p>Many gas-liquid flows are controlled by the dynamics at the phase interface, particularly the surface tension force. For example, in the atomization of a liquid fuel into droplets, the surface tension force controls the growth of interfacial instabilities that break apart the liquid core, forming ligaments and droplets that may again break apart if the flow inertia is larger than the surface tension force. For predictive simulations, of this and other gas-liquid flows, the surface tension
 force needs to be accurate and should converge with mesh refinement.</p>
 <p>Our new algorithm computes the interface curvature by fitting a polynomial to interfacial points computed from what&rsquo;s known as a volume of fluid interface representation. The fit is performed with a weighted least squares regression.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<figure class="ma0 w-55"><img src="/images/curve.png"
+    alt="A figure depicting a standing wave"><figcaption>
+      <p>To calculate the curvature of a phase interface, points are assigned to the &lsquo;PLIC&rsquo; which is a piecewise linear interface reconstruction. Once the points are assigned, a polynomial is fit to the points and the curvature of the polynomial is then calculated and used to represent the curvature of the interface.</p>
+    </figcaption>
+</figure>
+
 <p>The points used in the least squares method are weighted using a Gaussian distribution. What this means in practice is that points nearer
 to the location where the interface curvature is being calculated have a greater influence on the polynomial that is fit to the interface
 points, and consequently points nearer to the location where where the interface curvature is being calculated have a greater influence on
 the final curvature calculation itself.</p>
 <p>In this study the Gaussian distribution parameters were varied to change the scale the curvature is computed on (i.e. vary how much influence near and far points have on the line of best fit, and by extension the curvature calculation). The impact of the curvature scale was assessed for an oscillating droplet and a standing wave test case. These are test cases that are simple enough to have analytical solutions to use as a baseline measurement.</p>
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<p>In the figures above, the image on the left shows the standing wave test case solved numerically
+<figure class="ma0 w-55"><img src="/images/standing_wave1.png"
+    alt="A figure depicting a standing wave">
+</figure>
+
+<figure class="ma0 w-55"><img src="/images/standing_wave2.png"
+    alt="A figure depicting a standing wave"><figcaption>
+      <p>Standing wave test cases using a mesh of 16, 32, and 64 cells is shown by the red dashed line, black dotted line, and cyan dashed-dotted line, respectively. The analytical solution is shown by the solid blue line.</p>
+    </figcaption>
+</figure>
+
+<p>In the figures above, the top image shows the standing wave test case solved numerically
 where the polynomial fit used to calculate interface curvature was calculated using a rather narrow
-Gaussian distribution to weight the points that were fit to the interface. The image on the right
+Gaussian distribution to weight the points that were fit to the interface. The bottom image
 used a Gaussian distribution that was twice as wide.</p>
 <p>In a nutshell it turns out that it&rsquo;s important to balance how the points along the interace are weighted when fitting a polynomial to compute the interface curvature, with the grid resolution the curvature is being computed on. For a much more detailed analysis see our paper in the Journal of Computational Physics.</p>
 
@@ -243,8 +255,8 @@ used a Gaussian distribution that was twice as wide.</p>
             
             <div class="single-pagination-container-next">
                 <div class="single-pagination-text">
-                    <a href="/posts/crypto-pals-1/crypto_pals_set_1/">
-                        Cryptopals Challenges - Set 1
+                    <a href="/posts/robosub/robosub/">
+                        Autonomous Submarine
                     </a>
                 </div>
                 <div class="single-pagination-text">→</div>

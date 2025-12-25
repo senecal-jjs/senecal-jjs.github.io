@@ -6,14 +6,14 @@
     <description>Recent content in Computational Physics on Jacob Senecal</description>
     <generator>Hugo</generator>
     <language>en-us</language>
-    <lastBuildDate>Fri, 13 Jul 2018 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 22 May 2017 00:00:00 +0000</lastBuildDate>
     <atom:link href="http://localhost:1313/tags/computational-physics/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>Computational Fluid Dynamics</title>
       <link>http://localhost:1313/posts/computation_fluid_dynamics/curvature/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/computation_fluid_dynamics/curvature/</guid>
-      <description>An exploration in computational fluid dynamics.</description>
+      <description>An exploration in multi-phase flows.</description>
     </item>
   </channel>
 </rss>
