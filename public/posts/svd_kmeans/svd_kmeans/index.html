@@ -216,17 +216,20 @@ subspace k-means algorithm provides insight into the performance of the subspace
 algorithms when applied to high dimensional datasets, in addition to providing a practical
 means for applying the technique to high dimensional matrices.</p>
 <p>Combining clustering methods with dimensionality reduction or some form of subspace projection is not a new idea. For example principle component analysis (PCA) has been combined with k-means, as has linear discriminant analysis (LDA). The figures below demonstrate the improvement in clustering that can be obtained by using something like LDA k-means.</p>
-<figure class="ma0 w-55 mx-auto"><img src="/images/reg_kmeans.png"
-    alt="A figure depicting a robosub schematic"><figcaption>
-      <p>Classic k-means applied to a dataset.</p>
-    </figcaption>
-</figure>
-
-<figure><img src="/images/LDA_k-means.png"
-    alt="A figure depicting a robosub schematic"><figcaption>
-      <p>LDA k-means applied to the same dataset.</p>
-    </figcaption>
-</figure>
+<div style="display: flex; justify-content: space-around; align-items: flex-start; gap: 1rem;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/reg_kmeans.png" alt="Description of image 1" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Classic k-means applied to a dataset.</figcaption>
+    
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/LDA_k-means.png" alt="Description of image 2" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">LDA k-means applied to the same dataset.</figcaption>
+    
+  </figure>
+</div>
 
 <h2 class="heading" id="subspace-k-means">
   Subspace K-Means
@@ -277,33 +280,67 @@ Consequently, as the dimensionality of a dataset grows, calculating the transfor
   <a class="anchor" href="#clustering-results">#</a>
 </h2>
 <p>The following figures show runtime comparisons between different clustering methods as the number of data points is increased and the dimensionality of those datapoints is increased. You&rsquo;ll notice that compared to the original subspace k-means method, our randomized matrix decomposition modification results in an order of magnitude runtime improvement as the dimensionality of the dataset is increased.</p>
-<figure><img src="/images/Runtime_v_Instances.png"
-    alt="A figure depicting a robosub schematic">
-</figure>
-
-<figure><img src="/images/runtime_vs_dim.png"
-    alt="A figure depicting a robosub schematic">
-</figure>
+<div style="display: flex; justify-content: space-around; align-items: flex-start; gap: 1rem;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/Runtime_v_Instances.png" alt="Description of image 1" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Runtime scaling as dataset size increases.</figcaption>
+    
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/runtime_vs_dim.png" alt="Description of image 2" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Runtime scaling as dimensionality of data points increases.</figcaption>
+    
+  </figure>
+</div>
 
 <p>It&rsquo;s also interesting to look at how the subspace projections affect the datapoints we are trying to cluster. Each of the following figures shows subsets of different datasets plotted using the first two features of the original feature space on the left and the first two features of the cluster subspace on the right.</p>
 <div style="display: flex; justify-content: space-around; align-items: flex-start; gap: 1rem;">
   <figure style="flex: 1; margin: 0;">
     <img src="/images/plane_no_project.png" alt="Description of image 1" style="width: 100%; height: auto;">
     
-      <figcaption style="text-align: center;">First image caption</figcaption>
+      <figcaption style="text-align: center;">Original feature space.</figcaption>
     
   </figure>
   <figure style="flex: 1; margin: 0;">
     <img src="/images/plane_project.png" alt="Description of image 2" style="width: 100%; height: auto;">
     
-      <figcaption style="text-align: center;">Second image caption</figcaption>
+      <figcaption style="text-align: center;">Subspace projection.</figcaption>
     
   </figure>
 </div>
 
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
-<!-- raw HTML omitted -->
+<div style="display: flex; justify-content: space-around; align-items: flex-start; gap: 1rem;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/symbols_no_project.png" alt="Description of image 1" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Original feature space.</figcaption>
+    
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/symbols_project.png" alt="Description of image 2" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Subspace projection.</figcaption>
+    
+  </figure>
+</div>
+
+<div style="display: flex; justify-content: space-around; align-items: flex-start; gap: 1rem;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/wine_no_project.png" alt="Description of image 1" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Original feature space.</figcaption>
+    
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/wine_project.png" alt="Description of image 2" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Subspace projection.</figcaption>
+    
+  </figure>
+</div>
+
 <p>From the above plots we can see how the subspace projections help to identify components of the original dataset&rsquo;s feature space that produce the most separation between clusters. Additionally, with the introduction of the randomized matrix decomposition our algorithm is running much faster than the original subspace k-means algorithm.</p>
 
     </div>

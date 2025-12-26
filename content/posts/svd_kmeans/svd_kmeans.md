@@ -46,18 +46,13 @@ means for applying the technique to high dimensional matrices.
 
 Combining clustering methods with dimensionality reduction or some form of subspace projection is not a new idea. For example principle component analysis (PCA) has been combined with k-means, as has linear discriminant analysis (LDA). The figures below demonstrate the improvement in clustering that can be obtained by using something like LDA k-means.
 
-{{< figure
-  src="/images/reg_kmeans.png"
-  alt="A figure depicting a robosub schematic"
-  caption="Classic k-means applied to a dataset."
-  class="ma0 w-55 mx-auto"
->}}
-
-{{< figure
-  src="/images/LDA_k-means.png"
-  alt="A figure depicting a robosub schematic"
-  caption="LDA k-means applied to the same dataset."
-  class=""
+{{< twoimg
+  img1="/images/reg_kmeans.png" 
+  alt1="Description of image 1" 
+  caption1="Classic k-means applied to a dataset."
+  img2="/images/LDA_k-means.png" 
+  alt2="Description of image 2" 
+  caption2="LDA k-means applied to the same dataset."
 >}}
 
 ## Subspace K-Means
@@ -126,16 +121,13 @@ The cost function is decreasing in each assignment and update step, so the estim
 
 The following figures show runtime comparisons between different clustering methods as the number of data points is increased and the dimensionality of those datapoints is increased. You'll notice that compared to the original subspace k-means method, our randomized matrix decomposition modification results in an order of magnitude runtime improvement as the dimensionality of the dataset is increased. 
 
-{{< figure
-  src="/images/Runtime_v_Instances.png"
-  alt="A figure depicting a robosub schematic"
-  class=""
->}}
-
-{{< figure
-  src="/images/runtime_vs_dim.png"
-  alt="A figure depicting a robosub schematic"
-  class=""
+{{< twoimg
+  img1="/images/Runtime_v_Instances.png" 
+  alt1="Description of image 1" 
+  caption1="Runtime scaling as dataset size increases." 
+  img2="/images/runtime_vs_dim.png" 
+  alt2="Description of image 2" 
+  caption2="Runtime scaling as dimensionality of data points increases." 
 >}}
 
 It's also interesting to look at how the subspace projections affect the datapoints we are trying to cluster. Each of the following figures shows subsets of different datasets plotted using the first two features of the original feature space on the left and the first two features of the cluster subspace on the right.
@@ -143,38 +135,28 @@ It's also interesting to look at how the subspace projections affect the datapoi
 {{< twoimg
   img1="/images/plane_no_project.png" 
   alt1="Description of image 1" 
-  caption1="First image caption" 
+  caption1="Original feature space." 
   img2="/images/plane_project.png" 
   alt2="Description of image 2" 
-  caption2="Second image caption" 
+  caption2="Subspace projection." 
 >}}
 
-<!-- |||
-|{{< figure
-  src="/images/plane_no_project.png"
-  width="400"
-  alt="A figure depicting a robosub schematic"
-  class=""
->}}|
-{{< figure
-  src="/images/plane_project.png"
-  alt="A figure depicting a robosub schematic"
-  class=""
->}}| -->
+{{< twoimg
+  img1="/images/symbols_no_project.png" 
+  alt1="Description of image 1" 
+  caption1="Original feature space." 
+  img2="/images/symbols_project.png" 
+  alt2="Description of image 2" 
+  caption2="Subspace projection." 
+>}}
 
-<div class="img_row">
-    <img class="col-6" src="{{ url_for('static', filename="img/svd/plane_no_project.png") }}">
-    <img class="col-6" src="{{ url_for('static', filename="img/svd/plane_project.png") }}">
-</div>
-
-<div class="img_row">
-    <img class="col-6" src="{{ url_for('static', filename="img/svd/symbols_no_project.png") }}">
-    <img class="col-6" src="{{ url_for('static', filename="img/svd/symbols_project.png") }}">
-</div>
-
-<div class="img_row">
-    <img class="col-6" src="{{ url_for('static', filename="img/svd/wine_no_project.png") }}">
-    <img class="col-6" src="{{ url_for('static', filename="img/svd/wine_project.png") }}">
-</div>
+{{< twoimg
+  img1="/images/wine_no_project.png" 
+  alt1="Description of image 1" 
+  caption1="Original feature space." 
+  img2="/images/wine_project.png" 
+  alt2="Description of image 2" 
+  caption2="Subspace projection." 
+>}}
 
 From the above plots we can see how the subspace projections help to identify components of the original dataset's feature space that produce the most separation between clusters. Additionally, with the introduction of the randomized matrix decomposition our algorithm is running much faster than the original subspace k-means algorithm.
