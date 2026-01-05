@@ -51,17 +51,13 @@ the final curvature calculation itself.
 
 In this study the Gaussian distribution parameters were varied to change the scale the curvature is computed on (i.e. vary how much influence near and far points have on the line of best fit, and by extension the curvature calculation). The impact of the curvature scale was assessed for an oscillating droplet and a standing wave test case. These are test cases that are simple enough to have analytical solutions to use as a baseline measurement.
 
-{{< figure
-  src="/images/standing_wave1.png"
-  alt="A figure depicting a standing wave"
-  class="ma0 w-55"
->}}
-
-{{< figure
-  src="/images/standing_wave2.png"
-  alt="A figure depicting a standing wave"
-  caption="Standing wave test cases using a mesh of 16, 32, and 64 cells is shown by the red dashed line, black dotted line, and cyan dashed-dotted line, respectively. The analytical solution is shown by the solid blue line."
-  class="ma0 w-55"
+{{< twoimg
+  img1="/images/standing_wave1.png" 
+  alt1="Description of image 1" 
+  caption1="Standing wave test case solved numerically where the polynomial fit used to calculate interface curvature was calculated using a rather narrow Gaussian distribution to weight the points that were fit to the interface." 
+  img2="/images/standing_wave2.png" 
+  alt2="Description of image 2" 
+  caption2="Standing wave test cased solved using a Gaussian distribution that was twice as wide." 
 >}}
                 
 In the figures above, the top image shows the standing wave test case solved numerically 

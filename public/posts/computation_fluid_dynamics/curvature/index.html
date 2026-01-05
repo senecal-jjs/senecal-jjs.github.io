@@ -216,15 +216,20 @@ to the location where the interface curvature is being calculated have a greater
 points, and consequently points nearer to the location where where the interface curvature is being calculated have a greater influence on
 the final curvature calculation itself.</p>
 <p>In this study the Gaussian distribution parameters were varied to change the scale the curvature is computed on (i.e. vary how much influence near and far points have on the line of best fit, and by extension the curvature calculation). The impact of the curvature scale was assessed for an oscillating droplet and a standing wave test case. These are test cases that are simple enough to have analytical solutions to use as a baseline measurement.</p>
-<figure class="ma0 w-55"><img src="/images/standing_wave1.png"
-    alt="A figure depicting a standing wave">
-</figure>
-
-<figure class="ma0 w-55"><img src="/images/standing_wave2.png"
-    alt="A figure depicting a standing wave"><figcaption>
-      <p>Standing wave test cases using a mesh of 16, 32, and 64 cells is shown by the red dashed line, black dotted line, and cyan dashed-dotted line, respectively. The analytical solution is shown by the solid blue line.</p>
-    </figcaption>
-</figure>
+<div style="display: flex; justify-content: space-around; align-items: flex-start; gap: 1rem;">
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/standing_wave1.png" alt="Description of image 1" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Standing wave test case solved numerically where the polynomial fit used to calculate interface curvature was calculated using a rather narrow Gaussian distribution to weight the points that were fit to the interface.</figcaption>
+    
+  </figure>
+  <figure style="flex: 1; margin: 0;">
+    <img src="/images/standing_wave2.png" alt="Description of image 2" style="width: 100%; height: auto;">
+    
+      <figcaption style="text-align: center;">Standing wave test cased solved using a Gaussian distribution that was twice as wide.</figcaption>
+    
+  </figure>
+</div>
 
 <p>In the figures above, the top image shows the standing wave test case solved numerically
 where the polynomial fit used to calculate interface curvature was calculated using a rather narrow
@@ -249,14 +254,23 @@ used a Gaussian distribution that was twice as wide.</p>
 
         <div class="single-pagination-prev">
             
+            <div class="single-pagination-container-prev">
+                <div class="single-pagination-text">←</div>
+                <div class="single-pagination-text">
+                    <a href="/posts/robosub/robosub/">
+                        Autonomous Submarine
+                    </a>
+                </div>
+            </div>
+            
         </div>
 
         <div class="single-pagination-next">
             
             <div class="single-pagination-container-next">
                 <div class="single-pagination-text">
-                    <a href="/posts/robosub/robosub/">
-                        Autonomous Submarine
+                    <a href="/posts/image-search/image-search/">
+                        Deploying a Convolutional Neural Net for Image Similarity Search
                     </a>
                 </div>
                 <div class="single-pagination-text">→</div>

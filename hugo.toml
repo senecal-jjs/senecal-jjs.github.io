@@ -18,8 +18,10 @@ hideHeader = false
 # Intro on main page, content is markdown
 homeIntroTitle = 'Hi! 👋'
 homeIntroContent = """
-I am a Software Engineer with a strong foundation in computer science and experience with full stack development.
-I am interested in a range of topics, including algorithms, machine learning, and cryptography.
+I am an experienced Staff Software Engineer with a strong foundation in computer science, and engineering.
+I am interested in a range of topics, including full-stack development, algorithms, machine learning, and cryptography.
+
+I am the creator of [Timplit](https://timplit.com) and [Yantagram](https://yantagram.com).
 """
 
 singleDateFormat = '2 Jan 2006'
@@ -93,5 +95,6 @@ categoryid = "categoryId"
 mapping = "pathname"
 theme = "preferred_color_scheme"
 
-
-
+[caches]
+  [caches.images]
+    dir = ':cacheDir/images'

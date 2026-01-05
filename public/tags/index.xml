@@ -44,24 +44,24 @@
       <description></description>
     </item>
     <item>
-      <title>Autonomous</title>
-      <link>http://localhost:1313/tags/autonomous/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/autonomous/</guid>
+      <title>Image Search</title>
+      <link>http://localhost:1313/tags/image-search/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/image-search/</guid>
       <description></description>
     </item>
     <item>
       <title>Machine Learning</title>
       <link>http://localhost:1313/tags/machine-learning/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/machine-learning/</guid>
       <description></description>
     </item>
     <item>
-      <title>Submarine</title>
-      <link>http://localhost:1313/tags/submarine/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/tags/submarine/</guid>
+      <title>Neural Network</title>
+      <link>http://localhost:1313/tags/neural-network/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/neural-network/</guid>
       <description></description>
     </item>
     <item>
@@ -69,6 +69,20 @@
       <link>http://localhost:1313/tags/computational-physics/</link>
       <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/tags/computational-physics/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Autonomous</title>
+      <link>http://localhost:1313/tags/autonomous/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/autonomous/</guid>
+      <description></description>
+    </item>
+    <item>
+      <title>Submarine</title>
+      <link>http://localhost:1313/tags/submarine/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/tags/submarine/</guid>
       <description></description>
     </item>
   </channel>

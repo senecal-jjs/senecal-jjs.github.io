@@ -30,11 +30,11 @@
       <description>Improving k-means performance using a matrix decomposition</description>
     </item>
     <item>
-      <title>Autonomous Submarine</title>
-      <link>http://localhost:1313/posts/robosub/robosub/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/robosub/robosub/</guid>
-      <description>An autonomous submarine build</description>
+      <title>Deploying a Convolutional Neural Net for Image Similarity Search</title>
+      <link>http://localhost:1313/posts/image-search/image-search/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/image-search/image-search/</guid>
+      <description>Image similarity search via embeddings</description>
     </item>
     <item>
       <title>Computational Fluid Dynamics</title>
@@ -42,6 +42,13 @@
       <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/computation_fluid_dynamics/curvature/</guid>
       <description>An exploration in multi-phase flows.</description>
+    </item>
+    <item>
+      <title>Autonomous Submarine</title>
+      <link>http://localhost:1313/posts/robosub/robosub/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/robosub/robosub/</guid>
+      <description>An autonomous submarine build</description>
     </item>
   </channel>
 </rss>

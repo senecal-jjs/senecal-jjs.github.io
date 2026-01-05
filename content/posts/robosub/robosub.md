@@ -1,7 +1,7 @@
 ---
 title: "Autonomous Submarine"
 author: "Jacob Senecal"
-date: "2018-07-13"
+date: "2016-05-01"
 summary: "An autonomous submarine build"
 description: "An autonomous submarine build"
 toc: false
@@ -52,23 +52,20 @@ and an adapter piece that connects the linear actuator that moves the grip. The 
 a piece of t-frame aluminum that allowed easy swaps of different grip components during testing. The sub's robotic arm can be used to open doors and lids, and grab objects. The arm is pneumatically 
 powered with a maximum grip force of approximately 25 lbs. 
 
-<div class="img_row">
-    <img class="col-8" src="{{ url_for('static', filename="img/grip.png") }}">
-</div>
-
-<div class="col-12 caption">
-    Schematic of the sub's robotic arm.
-</div>
+{{< figure
+  src="/images/grip.png"
+  alt="A figure depicting a robosub schematic"
+  caption="Schematic of the sub's robotic arm in SolidWorks."
+  class="ma0 w-55"
+>}}
 
 A new version of the robosub is currently being produced with improved thusters, and electronics management. The updated design will also allow for easier upgrades in the future.
 
-<div class="img_row">
-    <img class="col-6" src="{{ url_for('static', filename="img/new_sub_frame.jpg") }}">
-    <img class="col-6" src="{{ url_for('static', filename="img/new_sub_electric.jpg") }}">
-</div>
-
-<div class="col-12 caption">
-    The new version of the Robosub currently in production.
-</div>
-
-
+{{< twoimg
+  img1="/images/new_sub_frame.jpg" 
+  alt1="Description of image 1" 
+  caption1="New sub frame." 
+  img2="/images/new_sub_electric.jpg" 
+  alt2="Description of image 2" 
+  caption2="Electronics harness" 
+>}}

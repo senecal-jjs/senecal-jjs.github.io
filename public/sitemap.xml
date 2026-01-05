@@ -35,23 +35,32 @@
     <loc>http://localhost:1313/posts/svd_kmeans/svd_kmeans/</loc>
     <lastmod>2019-11-13T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/autonomous/</loc>
-    <lastmod>2018-07-13T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/posts/image-search/image-search/</loc>
+    <lastmod>2018-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/posts/robosub/robosub/</loc>
-    <lastmod>2018-07-13T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/image-search/</loc>
+    <lastmod>2018-09-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/machine-learning/</loc>
-    <lastmod>2018-07-13T00:00:00+00:00</lastmod>
+    <lastmod>2018-09-23T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://localhost:1313/tags/submarine/</loc>
-    <lastmod>2018-07-13T00:00:00+00:00</lastmod>
+    <loc>http://localhost:1313/tags/neural-network/</loc>
+    <lastmod>2018-09-23T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/computation_fluid_dynamics/curvature/</loc>
     <lastmod>2017-05-22T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/tags/computational-physics/</loc>
     <lastmod>2017-05-22T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/autonomous/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/robosub/robosub/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/tags/submarine/</loc>
+    <lastmod>2016-05-01T00:00:00+00:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/about/</loc>
   </url><url>

@@ -30,11 +30,11 @@
       <description>Improving k-means performance using a matrix decomposition</description>
     </item>
     <item>
-      <title>Autonomous Submarine</title>
-      <link>http://localhost:1313/posts/robosub/robosub/</link>
-      <pubDate>Fri, 13 Jul 2018 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/posts/robosub/robosub/</guid>
-      <description>An autonomous submarine build</description>
+      <title>Deploying a Convolutional Neural Net for Image Similarity Search</title>
+      <link>http://localhost:1313/posts/image-search/image-search/</link>
+      <pubDate>Sun, 23 Sep 2018 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/image-search/image-search/</guid>
+      <description>Image similarity search via embeddings</description>
     </item>
     <item>
       <title>Computational Fluid Dynamics</title>
@@ -42,6 +42,13 @@
       <pubDate>Mon, 22 May 2017 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/posts/computation_fluid_dynamics/curvature/</guid>
       <description>An exploration in multi-phase flows.</description>
+    </item>
+    <item>
+      <title>Autonomous Submarine</title>
+      <link>http://localhost:1313/posts/robosub/robosub/</link>
+      <pubDate>Sun, 01 May 2016 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/posts/robosub/robosub/</guid>
+      <description>An autonomous submarine build</description>
     </item>
     <item>
       <title>About</title>
@@ -55,7 +62,7 @@
       <link>http://localhost:1313/library/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       <guid>http://localhost:1313/library/</guid>
-      <description>&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/40796176-infinite-powers&#34;&gt;Infinite Powers&lt;/a&gt; &lt;br&gt;&#xA;Excellent book about the history of calculus.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/50358103-money?ref=nav_sb_ss_1_31&#34;&gt;Money the True Story of a Made Up Thing&lt;/a&gt; &lt;br&gt;&#xA;Entertaining read about how currency has evolved.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/203578847-wind-and-truth?ref=nav_sb_ss_1_14&#34;&gt;Wind and Truth&lt;/a&gt; &lt;br&gt;&#xA;Conclusion to the first arc of the Stormligh Archive.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/830502.It?from_search=true&amp;amp;from_srp=true&amp;amp;qid=JtaGFUGvcE&amp;amp;rank=3&#34;&gt;It&lt;/a&gt; &lt;br&gt;&#xA;Stephen King&amp;rsquo;s horror masterpiece.&lt;/p&gt;</description>
+      <description>&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/40796176-infinite-powers&#34;&gt;Infinite Powers&lt;/a&gt; &lt;br&gt;&#xA;Excellent book about the history of calculus.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/50358103-money?ref=nav_sb_ss_1_31&#34;&gt;Money the True Story of a Made Up Thing&lt;/a&gt; &lt;br&gt;&#xA;Entertaining read about how currency has evolved.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/203578847-wind-and-truth?ref=nav_sb_ss_1_14&#34;&gt;Wind and Truth&lt;/a&gt; &lt;br&gt;&#xA;Conclusion to the first arc of the Stormlight Archive.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/830502.It?from_search=true&amp;amp;from_srp=true&amp;amp;qid=JtaGFUGvcE&amp;amp;rank=3&#34;&gt;It&lt;/a&gt; &lt;br&gt;&#xA;Stephen King&amp;rsquo;s horror masterpiece.&lt;/p&gt;&#xA;&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/816.Cryptonomicon?ref=nav_sb_ss_1_13&#34;&gt;Cryptonomicon&lt;/a&gt; &lt;br&gt;&#xA;A story following Detachment 2702&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
