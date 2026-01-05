@@ -98,3 +98,5 @@ theme = "preferred_color_scheme"
 [caches]
   [caches.images]
     dir = ':cacheDir/images'
+
+enableEmoji = true

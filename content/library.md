@@ -19,3 +19,5 @@ Stephen King's horror masterpiece.
 
 [Cryptonomicon](https://www.goodreads.com/book/show/816.Cryptonomicon?ref=nav_sb_ss_1_13) \
 A story following Detachment 2702
+
+I have a long list of books I need to add here. Stay tuned &#x1F600;
