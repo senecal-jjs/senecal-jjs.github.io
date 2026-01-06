@@ -4,7 +4,7 @@ author: "Jacob Senecal"
 date: "2022-06-12"
 summary: "Solutions to Set 1 of the CryptoPals challenges."
 description: "Solutions to Set 1 of the CryptoPals challenges."
-toc: true
+toc: false
 readTime: true
 autonumber: true
 math: true
