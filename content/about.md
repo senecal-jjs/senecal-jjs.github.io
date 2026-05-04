@@ -5,7 +5,7 @@ hideBackToTop: true
 hidePagination: true
 ---
 
-Hi all, I’m a Staff Software Engineer currently working on FinTech and stablecoin infrastructure at [Figure Technologies](https://figuremarkets.com). I joined the company when it was one year old, and helped it scale to a successful IPO in September 2025. Before that I worked for Blackmore Sensors and Analytics (now part of [Aurora](https://aurora.tech)), and [Los Alamos National Laboratory](https://lanl.gov). 
+I’m a Staff Software Engineer currently working on FinTech and stablecoin infrastructure at [Figure Technologies](https://figuremarkets.com). I joined the company when it was one year old, and helped it scale to a successful IPO in September 2025. Before that I worked for Blackmore Sensors and Analytics (now part of [Aurora](https://aurora.tech)), and [Los Alamos National Laboratory](https://lanl.gov). 
 
 At Blackmore I worked on developing analytics for a unique long range LIDAR sensor. At Los Alamos National Laboratory I developed a new interferometer design for acoustic wavenumber spectroscopy.
 
