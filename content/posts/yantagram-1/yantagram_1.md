@@ -23,7 +23,7 @@ Yantagram relies on no central servers, a user's identity lives on their device,
 
 What follows is an introduction to the features in Yantagram. Future posts will expand on how the app works in greater detail.
 
-Yantagram is now in a public beta test. If you'd like to be included send an email to *dev@yantagram.com*
+Yantagram is now in a private beta test. If you'd like to be included send an email to *dev@yantagram.com* or visit the [website](https://yantagram.com).
 
 ## Local-First
 
@@ -57,4 +57,4 @@ User privacy is further enhanced by limiting message retention on devices. Messa
 
 ## Try it out!
 
-Yantagram is now in a public beta test. If you'd like to be included send an email to *dev@yantagram.com*
+Yantagram is now in a private beta test. If you'd like to be included send an email to *dev@yantagram.com*. The project's website is [here](https://yantagram.com).
