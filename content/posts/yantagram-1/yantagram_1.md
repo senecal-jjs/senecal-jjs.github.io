@@ -23,6 +23,8 @@ Yantagram relies on no central servers, a user's identity lives on their device,
 
 What follows is an introduction to the features in Yantagram. Future posts will expand on how the app works in greater detail.
 
+Yantagram is now in a public beta test. If you'd like to be included send an email to *dev@yantagram.com*
+
 ## Local-First
 
 A local-first application is software that stores data primarily on the user's local device (laptop, phone) rather than a remote server, enabling instant, offline-capable, and secure experiences. This is in contrast to iMessage for example, where backups may be stored remotely in Apple's servers.  
